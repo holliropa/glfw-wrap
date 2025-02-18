@@ -3,33 +3,18 @@
 #include "config.h"
 #include "window.h"
 #include "context.h"
+#include "hints.h"
 
 namespace GLFWWRAP_NAMESPACE {
-    class GLFW {
-    private:
-        bool init_;
+    [[nodiscard]] inline bool init() {
+        return glfwInit() == GLFW_TRUE;
+    }
 
-        explicit GLFW(bool init)
-                : init_(init) {}
+    inline void terminate() {
+        glfwTerminate();
+    }
 
-    public:
-        ~GLFW() {
-            glfwTerminate();
-        }
-
-        [[nodiscard]] bool isInitialized() const {
-            return init_;
-        }
-
-        [[nodiscard]] friend GLFW init() {
-            return GLFW(glfwInit());
-        }
-    };
-
-    [[nodiscard]] inline GLFW init();
-
-    [[nodiscard]] inline double getTime()
-    {
+    [[nodiscard]] inline double getTime() {
         return glfwGetTime();
     }
 }

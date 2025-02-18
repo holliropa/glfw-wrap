@@ -12,7 +12,7 @@ namespace GLFWWRAP_NAMESPACE{
 
     public:
         template<typename CallbackT>
-        void setCallback(CallbackT&& callback_)
+        void set(CallbackT&& callback_)
         {
             _handler = std::forward<CallbackT>(callback_);
         }
