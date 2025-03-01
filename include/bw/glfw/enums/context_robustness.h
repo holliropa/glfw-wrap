@@ -1,13 +1,12 @@
 #pragma once
 
-#include "../config.h"
 
-namespace GLFWWRAP_NAMESPACE {
+namespace glfw {
     namespace enums {
         enum class ContextRobustness {
-            NoRobustness = GLFW_NO_ROBUSTNESS,
+            NoRobustness        = GLFW_NO_ROBUSTNESS,
             NoResetNotification = GLFW_NO_RESET_NOTIFICATION,
-            LoseContextOnReset = GLFW_LOSE_CONTEXT_ON_RESET
+            LoseContextOnReset  = GLFW_LOSE_CONTEXT_ON_RESET
         };
     }
 

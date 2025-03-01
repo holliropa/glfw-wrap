@@ -1,13 +1,12 @@
 #pragma once
 
-#include "config.h"
 #include "enums/opengl_profile.h"
 #include "enums/client_api.h"
 #include "enums/context_creation_api.h"
 #include "enums/context_robustness.h"
 #include "enums/context_release_behavior.h"
 
-namespace GLFWWRAP_NAMESPACE {
+namespace glfw {
     constexpr int DONT_CARE = GLFW_DONT_CARE;
 
     struct WindowHints {

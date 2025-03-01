@@ -1,13 +1,12 @@
 #pragma once
 
-#include "../config.h"
 
-namespace GLFWWRAP_NAMESPACE {
+namespace glfw {
     namespace enums {
         enum class ClientApi {
-            OpenGL = GLFW_OPENGL_API,
-            OpenGLES = GLFW_OPENGL_ES_API,
-            NoApi = GLFW_NO_API
+            OpenGL    = GLFW_OPENGL_API,
+            OpenGL_ES = GLFW_OPENGL_ES_API,
+            NoApi     = GLFW_NO_API
         };
     }
 

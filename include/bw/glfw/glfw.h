@@ -1,11 +1,10 @@
 #pragma once
 
-#include "config.h"
 #include "window.h"
 #include "context.h"
 #include "hints.h"
 
-namespace GLFWWRAP_NAMESPACE {
+namespace glfw {
     [[nodiscard]] inline bool init() {
         return glfwInit() == GLFW_TRUE;
     }
