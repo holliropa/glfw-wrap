@@ -17,34 +17,59 @@ glfw {
             return *static_cast<Window*>(glfwGetWindowUserPointer(handle_));
         }
 
-        static void _framebufferSizeCallback(GLFWwindow* window_, int width_, int height_) {
-            Window& wrapper = _getWrapperFromHandle(window_);
-            wrapper.framebufferSizeEvent(width_, height_);
+        static void _framebufferSizeCallback(GLFWwindow* window_,
+                                             const int width_,
+                                             const int height_
+        ) {
+            _getWrapperFromHandle(window_)
+                .framebufferSizeEvent(width_, height_);
         }
 
-        static void _keyCallback(GLFWwindow* window_, int key, int scancode, int action, int mods) {
-            Window& wrapper = _getWrapperFromHandle(window_);
-            wrapper.keyEvent(static_cast<KeyCode>(key),
-                             scancode,
-                             static_cast<KeyAction>(action),
-                             static_cast<ModifierKeyBit>(mods));
+        static void _keyCallback(GLFWwindow* window_,
+                                 const int key,
+                                 const int scancode,
+                                 const int action,
+                                 const int mods
+        ) {
+            _getWrapperFromHandle(window_)
+                .keyEvent(static_cast<KeyCode>(key),
+                          scancode,
+                          static_cast<KeyAction>(action),
+                          static_cast<ModifierKeyBit>(mods));
         }
 
-        static void _cursorPosCallback(GLFWwindow* window_, double x, double y) {
-            Window& wrapper = _getWrapperFromHandle(window_);
-            wrapper.cursorPosEvent(x, y);
+        static void _cursorPosCallback(GLFWwindow* window_,
+                                       const double x,
+                                       const double y
+        ) {
+            _getWrapperFromHandle(window_)
+                .cursorPosEvent(x, y);
         }
 
-        static void _mouseButtonCallback(GLFWwindow* window_, int button, int action, int mods) {
-            Window& wrapper = _getWrapperFromHandle(window_);
-            wrapper.mouseButtonEvent(static_cast<MouseButton>(button),
-                                     static_cast<MouseButtonAction>(action),
-                                     static_cast<ModifierKeyBit>(mods));
+        static void _mouseButtonCallback(GLFWwindow* window_,
+                                         const int button,
+                                         const int action,
+                                         const int mods
+        ) {
+            _getWrapperFromHandle(window_)
+                .mouseButtonEvent(static_cast<MouseButton>(button),
+                                  static_cast<MouseButtonAction>(action),
+                                  static_cast<ModifierKeyBit>(mods));
         }
 
-        static void _cursorEnterCallback(GLFWwindow* window_, int enter) {
-            Window& wrapper = _getWrapperFromHandle(window_);
-            wrapper.cursorEnterEvent(static_cast<bool>(enter));
+        static void _cursorEnterCallback(GLFWwindow* window_,
+                                         const int enter
+        ) {
+            _getWrapperFromHandle(window_)
+                .cursorEnterEvent(static_cast<bool>(enter));
+        }
+
+        static void _scrollCallback(GLFWwindow* window_,
+                                    const double x,
+                                    const double y
+        ) {
+            _getWrapperFromHandle(window_)
+                .scrollEvent(x, y);
         }
 
     public:
@@ -53,9 +78,10 @@ glfw {
         Event<double, double> cursorPosEvent;
         Event<MouseButton, MouseButtonAction, ModifierKeyBit> mouseButtonEvent;
         Event<bool> cursorEnterEvent;
+        Event<double, double> scrollEvent;
 
-        Window(int width,
-               int height,
+        Window(const int width,
+               const int height,
                const char* title,
                GLFWmonitor* monitor = nullptr,
                GLFWwindow* share = nullptr) {
@@ -68,6 +94,7 @@ glfw {
             glfwSetCursorPosCallback(window, _cursorPosCallback);
             glfwSetMouseButtonCallback(window, _mouseButtonCallback);
             glfwSetCursorEnterCallback(window, _cursorEnterCallback);
+            glfwSetScrollCallback(window, _scrollCallback);
         }
 
         ~Window() {
