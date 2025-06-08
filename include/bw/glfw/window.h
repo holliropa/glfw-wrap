@@ -109,7 +109,7 @@ glfw {
             return glfwWindowShouldClose(window);
         }
 
-        void setShouldClose(bool value) {
+        void setShouldClose(const bool value) {
             glfwSetWindowShouldClose(window, value);
         }
 
@@ -121,6 +121,10 @@ glfw {
             glfwSetWindowTitle(window, title_);
         }
 
+        void setSwapInterval(const int interval) {
+            glfwSwapInterval(interval);
+        }
+
         void setCursorMode(CursorMode mode) const {
             glfwSetInputMode(window, GLFW_CURSOR, static_cast<int>(mode));
         }
@@ -129,7 +133,7 @@ glfw {
             glfwGetCursorPos(window, x, y);
         }
 
-        void setCursorPosition(double x, double y) const {
+        void setCursorPosition(const double x, const double y) const {
             glfwSetCursorPos(window, x, y);
         }
 
